@@ -1,0 +1,50 @@
+name: Tests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.9.0
+        with:
+          php-version: "7.4"
+          extensions: simplexml, dom, xml, xdebug, intl
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --prefer-dist
+
+      - name: Recreate autoload file
+        run: composer dump-autoload
+
+      - name: Copy necessary phpunit config
+        run: cp .github/workflows/config/phpunit.xml .
+
+      - name: Run Unit Tests
+        run: vendor/bin/phpunit
+
+      - name: Make code coverage badge
+        uses: timkrase/phpunit-coverage-badge@v1.2.1
+        with:
+          report: tests/coverage/xml/clover.xml
+          coverage_badge_path: tests/coverage/badge.svg
+          push_badge: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}

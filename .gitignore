@@ -1,6 +1,6 @@
 .vscode
 
-phpunit.xml
+/phpunit.xml
 
 .php-cs-fixer.php
 .php-cs-fixer.cache
@@ -8,6 +8,6 @@ phpunit.xml
 
 composer.lock
 
-/tests/coverage
+/tests/coverage/html
 /vendor
 /test-tmp
