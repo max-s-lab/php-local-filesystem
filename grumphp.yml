@@ -6,4 +6,4 @@ grumphp:
     phpstan:
       configuration: phpstan.neon
     phpunit:
-      config_file: phpunit.xml.dist
+      config_file: phpunit.dist.xml
