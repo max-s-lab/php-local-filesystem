@@ -4,6 +4,6 @@ grumphp:
     phpcsfixer:
       config: .php-cs-fixer.dist.php
     phpstan:
-      configuration: phpstan.neon
+      configuration: phpstan.dist.neon
     phpunit:
       config_file: phpunit.dist.xml

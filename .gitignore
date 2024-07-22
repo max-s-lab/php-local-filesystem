@@ -1,8 +1,9 @@
 .vscode
 
+.php-cs-fixer.php
+phpstan.neon
 /phpunit.xml
 
-.php-cs-fixer.php
 .php-cs-fixer.cache
 .phpunit.result.cache
 
