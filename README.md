@@ -28,15 +28,13 @@ to the ```require``` section of your `composer.json` file.
 #### Base
 You just need to set the root directory and start using.
 ```
-use MaxSLab\Filesystem\Local;
+use MaxSLab\Filesystem\Local\LocalFilesystem;
 
 $filesystem = new LocalFilesystem('/var/www/some-directory');
 ```
 #### Advantage
 You can also set default permissions for nested directories and files.
 ```
-use MaxSLab\Filesystem\Local;
-
 $filesystem = new LocalFilesystem('/var/www/some-directory', [
     'defaultPermissions' => [
         'directory' => 0755,
