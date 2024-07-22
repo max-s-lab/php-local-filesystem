@@ -1,0 +1,9 @@
+grumphp:
+  process_timeout: 300
+  tasks:
+    phpcsfixer:
+      config: .php-cs-fixer.dist.php
+    phpstan:
+      configuration: phpstan.neon
+    phpunit:
+      config_file: phpunit.xml.dist

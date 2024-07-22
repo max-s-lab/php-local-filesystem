@@ -1,0 +1,45 @@
+{
+    "name": "max-s-lab/php-local-filesystem",
+    "description": "A package for convenient work with local filesystem.",
+    "keywords": [
+        "filesystem",
+        "filesystems",
+        "file",
+        "files",
+        "directory",
+        "directories"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maksim Sprikov",
+            "email": "spirkov.2001@mail.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-fileinfo": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "friendsofphp/php-cs-fixer": "^3.56",
+        "phpro/grumphp": "^1.13",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "MaxSLab\\Filesystem\\Local\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MaxSLab\\Filesystem\\Local\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
+    }
+}
