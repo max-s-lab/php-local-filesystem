@@ -2,11 +2,10 @@
   MaxSLab PHP Local Filesystem Library 
 </h1>
 
-[![Latest Version](https://img.shields.io/github/tag/max-s-lab/php-local-filesystem.svg)](https://github.com/max-s-lab/php-local-filesystem/releases)
 ![php 7.4+](https://img.shields.io/badge/php-min%207.4.0-blue.svg)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/max-s-lab/php-local-filesystem/blob/master/LICENSE)
-![PHPStan Level 9](https://img.shields.io/badge/PHPStan-level%209-brightgreen)
 ![Code Coverage Badge](./tests/coverage/badge.svg)
+![PHPStan Level 9](https://img.shields.io/badge/PHPStan-level%209-brightgreen)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/max-s-lab/php-local-filesystem/blob/master/LICENSE)
 
 ## Installation
 Run
