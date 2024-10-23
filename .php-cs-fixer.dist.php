@@ -63,5 +63,8 @@ return (new PhpCsFixer\Config())
             'identical' => false,
             'less_and_greater' => false,
         ],
+        'function_declaration' => [
+            'closure_fn_spacing' => 'none',
+        ],
     ])
     ->setFinder($finder);
