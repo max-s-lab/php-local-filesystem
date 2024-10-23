@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721970692">
-  <project timestamp="1721970692">
+<coverage generated="1729660875">
+  <project timestamp="1729660875">
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystem.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystem" namespace="global">
         <metrics complexity="44" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="108" coveredelements="108"/>
