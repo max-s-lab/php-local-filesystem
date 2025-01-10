@@ -49,6 +49,7 @@ return (new PhpCsFixer\Config())
         'normalize_index_brace' => true,
         'nullable_type_declaration' => ['syntax' => 'question_mark'],
         'object_operator_without_whitespace' => true,
+        'ordered_class_elements' => true,
         'return_assignment' => true,
         'semicolon_after_instruction' => true,
         'single_line_comment_spacing' => true,

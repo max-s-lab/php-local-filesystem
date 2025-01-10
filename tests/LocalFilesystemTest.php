@@ -31,12 +31,20 @@ class LocalFilesystemTest extends TestCase
 
     private LocalFilesystem $filesystem;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->filesystem = new LocalFilesystem(dirname(__DIR__) . '/test-tmp');
 
         // Fix test on differrent platforms
         umask(0);
+    }
+
+    protected function tearDown(): void
+    {
+        try {
+            $this->filesystem->deleteDirectory('');
+        } catch (LocalFilesystemException $e) {
+        }
     }
 
     public function testCreatingDirectory(): void
@@ -319,13 +327,5 @@ class LocalFilesystemTest extends TestCase
     {
         $this->expectException(LocalFilesystemException::class);
         $this->filesystem->moveFile(self::NOT_EXISTING_FILE_NAME, self::MOVING_PATH);
-    }
-
-    protected function tearDown(): void
-    {
-        try {
-            $this->filesystem->deleteDirectory('');
-        } catch (LocalFilesystemException $e) {
-        }
     }
 }
