@@ -23,7 +23,7 @@ class LocalFilesystemHelperTest extends TestCase
     /**
      * @return array{array{string,string}}
      */
-    public function pathProvider(): array
+    public static function pathProvider(): array
     {
         $basePath = str_replace('/', DIRECTORY_SEPARATOR, __DIR__);
         $expectedPath = $basePath . DIRECTORY_SEPARATOR . self::TEST_DIRECTORY_NAME;

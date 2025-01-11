@@ -67,5 +67,8 @@ return (new PhpCsFixer\Config())
         'function_declaration' => [
             'closure_fn_spacing' => 'none',
         ],
+        'php_unit_set_up_tear_down_visibility' => true,
+        'php_unit_data_provider_static' => true,
     ])
+    ->setRiskyAllowed(true)
     ->setFinder($finder);
