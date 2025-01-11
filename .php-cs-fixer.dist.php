@@ -13,6 +13,7 @@ return (new PhpCsFixer\Config())
         'array_indentation' => true,
         'array_syntax' => ['syntax' => 'short'],
         'assign_null_coalescing_to_coalesce_equal' => true,
+        'binary_operator_spaces' => true,
         'blank_line_before_statement' => true,
         'cast_spaces' => true,
         'concat_space' => ['spacing' => 'one'],
