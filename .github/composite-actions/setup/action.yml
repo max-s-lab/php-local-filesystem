@@ -1,0 +1,15 @@
+name: "Setup"
+description: "Setup PHP, Composer and dependencies"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@2.9.0
+      with:
+        php-version: "7.4"
+        extensions: simplexml, dom, xml, xdebug, intl
+
+    - name: Install dependencies
+      shell: "sh"
+      run: composer install
