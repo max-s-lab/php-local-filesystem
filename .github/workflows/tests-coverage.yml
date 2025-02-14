@@ -1,24 +1,21 @@
-name: Tests
+name: Tests coverage badge
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
 jobs:
   tests:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup
         uses: ./.github/composite-actions/setup
-
-      - name: Run Unit Tests
-        run: vendor/bin/phpunit
+        with:
+          php-version: "7.4"
 
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
