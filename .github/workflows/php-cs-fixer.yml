@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  tests:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,5 +34,5 @@ jobs:
       - name: Recreate autoload file
         run: composer dump-autoload
 
-      - name: Run PHPStan
+      - name: Run PhpCsFixer
         run: vendor/bin/php-cs-fixer check
