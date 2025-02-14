@@ -1,4 +1,4 @@
-name: PHPStan
+name: PhpCsFixer
 on:
   push:
     branches:
@@ -35,4 +35,4 @@ jobs:
         run: composer dump-autoload
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan .
+        run: vendor/bin/php-cs-fixer check
