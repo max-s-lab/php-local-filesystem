@@ -15,6 +15,10 @@ runs:
         php-version: ${{ inputs.php-version }}
         extensions: simplexml, dom, xml, xdebug, intl
 
+    - name: Copy necessary phpunit config
+      shell: "sh"
+      run: cp .github/workflows/config/phpunit.xml .
+
     - name: Install dependencies
       shell: "sh"
       run: composer install
