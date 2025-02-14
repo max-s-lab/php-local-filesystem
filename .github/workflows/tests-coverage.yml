@@ -2,7 +2,7 @@ name: Tests coverage badge
 on:
   push:
     branches:
-      - main
+      - ci-checks
 
 jobs:
   tests:
@@ -15,7 +15,10 @@ jobs:
       - name: Setup
         uses: ./.github/composite-actions/setup
         with:
-          php-version: "7.4"
+          php-version: "8.3"
+
+      - name: Run Unit Tests
+        run: vendor/bin/phpunit
 
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
