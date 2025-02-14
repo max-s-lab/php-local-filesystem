@@ -1,0 +1,24 @@
+name: "Setup"
+description: "Setup PHP, Composer and dependencies"
+
+inputs:
+  php-version:
+    description: "PHP version"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@2.9.0
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: simplexml, dom, xml, xdebug, intl
+
+    - name: Copy necessary phpunit config
+      shell: "sh"
+      run: cp .github/workflows/config/phpunit.xml .
+
+    - name: Install dependencies
+      shell: "sh"
+      run: composer install

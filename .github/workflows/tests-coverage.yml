@@ -1,0 +1,29 @@
+name: Tests coverage badge
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/composite-actions/setup
+        with:
+          php-version: "7.4"
+
+      - name: Run Unit Tests
+        run: vendor/bin/phpunit
+
+      - name: Make code coverage badge
+        uses: timkrase/phpunit-coverage-badge@v1.2.1
+        with:
+          report: tests/coverage/xml/clover.xml
+          coverage_badge_path: tests/coverage/badge.svg
+          push_badge: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
