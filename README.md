@@ -42,46 +42,6 @@ $filesystem = new LocalFilesystem('/var/www/some-directory', [
 ]);
 ```
 
-### Preparing full path
-```
-$result = $filesystem->prepareFullPath('file.txt');
-```
-
-```
-$result = $filesystem->prepareFullPath('directory');
-```
-
-### Listing pathnames
-```
-$result = filesystem->listPathnames('*');
-```
-For more information, see <a href="https://www.php.net/manual/ru/function.glob.php">glob</a>.
-
-### Set permissions
-```
-$filesystem->setPermissions('file.txt', 0644);
-```
-```
-$filesystem->setPermissions('directory', 0755);
-```
-
-### Get permissions
-```
-$result = $filesystem->getPermissions('file.txt');
-```
-```
-$result = $filesystem->getPermissions('directory');
-```
-For more information about the returned values, see <a href="https://www.php.net/manual/ru/function.fileperms.php">fileperms</a>.
-
-### Check existing methods
-```
-$result = $filesystem->fileExists('file.txt');
-```
-```
-$result = $filesystem->directoryExists('directory');
-```
-
 ### Writing to a file
 Writing content to a file with the creation of a file and a directory for it.
 ```
@@ -179,4 +139,44 @@ $filesystem->createDirectory('directory', 0777);
 Recursively deleting a directory along with the contained files and directories.
 ```
 $filesystem->deleteDirectory('directory');
+```
+
+### Preparing full path
+```
+$result = $filesystem->prepareFullPath('file.txt');
+```
+
+```
+$result = $filesystem->prepareFullPath('directory');
+```
+
+### Listing pathnames
+```
+$result = filesystem->listPathnames('*');
+```
+For more information, see <a href="https://www.php.net/manual/ru/function.glob.php">glob</a>.
+
+### Set permissions
+```
+$filesystem->setPermissions('file.txt', 0644);
+```
+```
+$filesystem->setPermissions('directory', 0755);
+```
+
+### Get permissions
+```
+$result = $filesystem->getPermissions('file.txt');
+```
+```
+$result = $filesystem->getPermissions('directory');
+```
+For more information about the returned values, see <a href="https://www.php.net/manual/ru/function.fileperms.php">fileperms</a>.
+
+### Check existing methods
+```
+$result = $filesystem->fileExists('file.txt');
+```
+```
+$result = $filesystem->directoryExists('directory');
 ```
