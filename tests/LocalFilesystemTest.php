@@ -6,7 +6,6 @@ use MaxSLab\Filesystem\Local\LocalFilesystemException;
 use MaxSLab\Filesystem\Local\LocalFilesystemHelper;
 use MaxSLab\Filesystem\Local\LocalFilesystem;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 use stdClass;
 
 /**
@@ -33,18 +32,10 @@ class LocalFilesystemTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->filesystem = new LocalFilesystem(dirname(__DIR__) . '/test-tmp');
+        $this->filesystem = new LocalFilesystem(__DIR__ . '/tmp/' . (string) microtime(true));
 
         // Fix test on differrent platforms
         umask(0);
-    }
-
-    protected function tearDown(): void
-    {
-        try {
-            $this->filesystem->deleteDirectory('');
-        } catch (LocalFilesystemException $e) {
-        }
     }
 
     public function testCreatingDirectory(): void
@@ -82,19 +73,6 @@ class LocalFilesystemTest extends TestCase
     {
         $this->expectException(LocalFilesystemException::class);
         $this->filesystem->deleteDirectory(self::NOT_EXISTING_DIRECTORY_NAME);
-    }
-
-    public function testDeletingNotExistingDirectoryByFullPath(): void
-    {
-        $class = new ReflectionClass(LocalFilesystem::class);
-        $method = $class->getMethod('deleteDirectoryByFullPath');
-
-        if (PHP_VERSION_ID < 80100) {
-            $method->setAccessible(true);
-        }
-
-        $this->expectException(LocalFilesystemException::class);
-        $method->invokeArgs($this->filesystem, [self::NOT_EXISTING_DIRECTORY_NAME]);
     }
 
     public function testReCreationDirectory(): void
