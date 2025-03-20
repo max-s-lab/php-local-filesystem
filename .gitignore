@@ -11,4 +11,4 @@ composer.lock
 
 /tests/coverage/html
 /vendor
-/test-tmp
+/tests/tmp
