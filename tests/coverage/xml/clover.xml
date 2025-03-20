@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1739622988">
-  <project timestamp="1739622988">
+<coverage generated="1742480672">
+  <project timestamp="1742480672">
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystem.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystem" namespace="global">
-        <metrics complexity="44" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="108" coveredelements="108"/>
+        <metrics complexity="44" methods="26" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="81" elements="108" coveredelements="106"/>
       </class>
-      <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="32"/>
-      <line num="33" type="stmt" count="32"/>
-      <line num="34" type="stmt" count="32"/>
-      <line num="35" type="stmt" count="32"/>
-      <line num="41" type="method" name="prepareFullPath" visibility="public" complexity="1" crap="1" count="32"/>
-      <line num="43" type="stmt" count="32"/>
+      <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="31"/>
+      <line num="33" type="stmt" count="31"/>
+      <line num="34" type="stmt" count="31"/>
+      <line num="35" type="stmt" count="31"/>
+      <line num="41" type="method" name="prepareFullPath" visibility="public" complexity="1" crap="1" count="31"/>
+      <line num="43" type="stmt" count="31"/>
       <line num="49" type="method" name="fileExists" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="51" type="stmt" count="4"/>
       <line num="57" type="method" name="directoryExists" visibility="public" complexity="1" crap="1" count="4"/>
@@ -77,19 +77,19 @@
       <line num="286" type="stmt" count="6"/>
       <line num="287" type="stmt" count="6"/>
       <line num="288" type="stmt" count="6"/>
-      <line num="298" type="method" name="deleteDirectory" visibility="public" complexity="4" crap="4" count="32"/>
-      <line num="300" type="stmt" count="32"/>
-      <line num="302" type="stmt" count="32"/>
-      <line num="303" type="stmt" count="11"/>
-      <line num="306" type="stmt" count="21"/>
-      <line num="307" type="stmt" count="21"/>
-      <line num="308" type="stmt" count="21"/>
-      <line num="309" type="stmt" count="21"/>
-      <line num="312" type="stmt" count="21"/>
-      <line num="313" type="stmt" count="19"/>
-      <line num="314" type="stmt" count="12"/>
-      <line num="316" type="stmt" count="14"/>
-      <line num="320" type="stmt" count="21"/>
+      <line num="298" type="method" name="deleteDirectory" visibility="public" complexity="4" crap="4" count="3"/>
+      <line num="300" type="stmt" count="3"/>
+      <line num="302" type="stmt" count="3"/>
+      <line num="303" type="stmt" count="1"/>
+      <line num="306" type="stmt" count="2"/>
+      <line num="307" type="stmt" count="2"/>
+      <line num="308" type="stmt" count="2"/>
+      <line num="309" type="stmt" count="2"/>
+      <line num="312" type="stmt" count="2"/>
+      <line num="313" type="stmt" count="1"/>
+      <line num="314" type="stmt" count="1"/>
+      <line num="316" type="stmt" count="1"/>
+      <line num="320" type="stmt" count="2"/>
       <line num="326" type="method" name="prepareDirectoryForFile" visibility="private" complexity="2" crap="2" count="16"/>
       <line num="328" type="stmt" count="16"/>
       <line num="330" type="stmt" count="16"/>
@@ -101,38 +101,38 @@
       <line num="350" type="method" name="createDirectoryByFullPath" visibility="private" complexity="2" crap="2" count="21"/>
       <line num="352" type="stmt" count="21"/>
       <line num="353" type="stmt" count="1"/>
-      <line num="360" type="method" name="deleteDirectoryByFullPath" visibility="private" complexity="2" crap="2" count="22"/>
-      <line num="362" type="stmt" count="22"/>
-      <line num="363" type="stmt" count="1"/>
-      <line num="370" type="method" name="deleteFileByFullPath" visibility="private" complexity="2" crap="2" count="16"/>
-      <line num="372" type="stmt" count="16"/>
+      <line num="360" type="method" name="deleteDirectoryByFullPath" visibility="private" complexity="2" crap="2.50" count="2"/>
+      <line num="362" type="stmt" count="2"/>
+      <line num="363" type="stmt" count="0"/>
+      <line num="370" type="method" name="deleteFileByFullPath" visibility="private" complexity="2" crap="2" count="3"/>
+      <line num="372" type="stmt" count="3"/>
       <line num="373" type="stmt" count="1"/>
       <line num="380" type="method" name="getDirectoryPermissionsFromParams" visibility="private" complexity="1" crap="1" count="16"/>
       <line num="382" type="stmt" count="16"/>
       <line num="388" type="method" name="getFilePermissionsFromParams" visibility="private" complexity="1" crap="1" count="13"/>
       <line num="390" type="stmt" count="13"/>
-      <line num="393" type="method" name="getLastErrorAsException" visibility="private" complexity="1" crap="1" count="14"/>
-      <line num="395" type="stmt" count="14"/>
-      <metrics loc="398" ncloc="252" classes="1" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="108" coveredelements="108"/>
+      <line num="393" type="method" name="getLastErrorAsException" visibility="private" complexity="1" crap="1" count="13"/>
+      <line num="395" type="stmt" count="13"/>
+      <metrics loc="398" ncloc="252" classes="1" methods="26" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="81" elements="108" coveredelements="106"/>
     </file>
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystemException.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystemException" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
-      <line num="15" type="stmt" count="15"/>
+      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="15" type="stmt" count="14"/>
       <metrics loc="18" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystemHelper.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystemHelper" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="10" type="method" name="normalizePath" visibility="public" complexity="1" crap="1" count="37"/>
-      <line num="12" type="stmt" count="37"/>
+      <line num="10" type="method" name="normalizePath" visibility="public" complexity="1" crap="1" count="36"/>
+      <line num="12" type="stmt" count="36"/>
       <line num="15" type="method" name="filepermsToOctatValue" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="17" type="stmt" count="4"/>
       <metrics loc="20" ncloc="17" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="3" loc="436" ncloc="284" classes="3" methods="29" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="85" coveredstatements="85" elements="114" coveredelements="114"/>
+    <metrics files="3" loc="436" ncloc="284" classes="3" methods="29" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="85" coveredstatements="84" elements="114" coveredelements="112"/>
   </project>
 </coverage>
