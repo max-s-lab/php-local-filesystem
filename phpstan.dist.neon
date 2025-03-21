@@ -1,5 +1,5 @@
 parameters:
-    level: 9
+    level: 10
 
     parallel:
         processTimeout: 90.0

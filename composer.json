@@ -27,7 +27,7 @@
         "phpunit/phpunit": "^9.6",
         "friendsofphp/php-cs-fixer": "^3.56",
         "phpro/grumphp": "^1.13",
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {
