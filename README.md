@@ -1,10 +1,10 @@
 <h1 align="center">
-  MaxSLab PHP Local Filesystem Library 
+  MaxSLab PHP Local Filesystem Library
 </h1>
 
 ![php 7.4+](https://img.shields.io/badge/php-min%207.4.0-blue.svg)
 ![Code Coverage Badge](./tests/coverage/badge.svg)
-![PHPStan Level 9](https://img.shields.io/badge/PHPStan-level%209-brightgreen)
+![PHPStan Level 10](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/max-s-lab/php-local-filesystem/blob/master/LICENSE)
 
 ## Installation
@@ -48,7 +48,7 @@ Writing content to a file with the creation of a file and a directory for it.
 $filesystem->writeToFile('file.txt', 'Test');
 ```
 
-This method also allows you to set permissions for directories and file. 
+This method also allows you to set permissions for directories and file.
 If you do not specify them, the default settings will be used.
 ```
 $filesystem->writeToFile('file.txt', 'Test', [
@@ -57,7 +57,7 @@ $filesystem->writeToFile('file.txt', 'Test', [
 ]);
 ```
 
-You can also use this method to write a stream to a file. 
+You can also use this method to write a stream to a file.
 To do this, simply replace ``'Test'`` with a stream.
 
 ### Deleting a file
@@ -71,7 +71,7 @@ Copying a file with creating a directory for it.
 $filesystem->copyFile('file.txt', 'directory/file.txt');
 ```
 
-This method also allows you to set permissions for directories and file. 
+This method also allows you to set permissions for directories and file.
 If you do not specify them, the default settings will be used.
 ```
 $filesystem->copyFile('file.txt', 'directory/file.txt', [
@@ -86,7 +86,7 @@ Moving a file with creating a directory for it.
 $filesystem->moveFile('file.txt', 'directory/file.txt');
 ```
 
-This method also allows you to set permissions for directories and file. 
+This method also allows you to set permissions for directories and file.
 If you do not specify them, the default settings will be used.
 ```
 $filesystem->moveFile('file.txt', 'directory/file.txt', [
