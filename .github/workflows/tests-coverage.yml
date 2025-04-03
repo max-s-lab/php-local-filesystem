@@ -34,4 +34,4 @@ jobs:
           git add tests/coverage/xml/clover.xml
           git add tests/coverage/badge.svg
           git commit -m "Update coverage badge"
-          git push --set-upstream origin coverage-badges
+          git push --set-upstream origin coverage-badges-${{ github.sha }}
