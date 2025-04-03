@@ -1,7 +1,7 @@
-name: Tests coverage badge 1
+name: Tests coverage badge
 on:
-  push:
-    branches-ignore:
+  pull_request:
+    branches:
       - main
 
 jobs:
@@ -25,5 +25,3 @@ jobs:
         with:
           report: tests/coverage/xml/clover.xml
           coverage_badge_path: tests/coverage/badge.svg
-          push_badge: true
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
