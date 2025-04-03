@@ -5,6 +5,7 @@
     beStrictAboutOutputDuringTests="true"
     failOnRisky="true"
     failOnWarning="true"
+    executionOrder="random"
 >
     <coverage processUncoveredFiles="true">
         <include>
