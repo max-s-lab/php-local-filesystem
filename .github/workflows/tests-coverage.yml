@@ -26,7 +26,7 @@ jobs:
           report: tests/coverage/xml/clover.xml
           coverage_badge_path: tests/coverage/badge.svg
 
-      - name: Push to branch
+      - name: Creating a branch with a new badge
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
