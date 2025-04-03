@@ -1,4 +1,4 @@
-name: Tests coverage badge
+name: Tests coverage badge 1
 on:
   push:
     branches-ignore:
