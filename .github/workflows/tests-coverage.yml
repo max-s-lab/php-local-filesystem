@@ -35,3 +35,4 @@ jobs:
           git add tests/coverage/badge.svg
           git commit -m "Update coverage badge"
           git push --set-upstream origin coverage-badges-${{ github.sha }}
+          gh pr create --title "Update coverage bage" --body "Automatic updating coverage badge"
