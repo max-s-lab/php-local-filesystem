@@ -30,7 +30,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch main
           git switch -c coverage-badges
-          git add .
+          git add tests/coverage/xml/clover.xml
+          git add tests/coverage/badge.svg
           git commit -m "Update coverage badge"
           git push --set-upstream origin coverage-badges
