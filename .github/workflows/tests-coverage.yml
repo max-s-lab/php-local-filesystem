@@ -25,3 +25,10 @@ jobs:
         with:
           report: tests/coverage/xml/clover.xml
           coverage_badge_path: tests/coverage/badge.svg
+
+      - name: Push to branch
+        run: |
+          git switch -c coverage-badges
+          git add .
+          git commit -m "Update coverage badge"
+          git push
