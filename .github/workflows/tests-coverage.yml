@@ -2,7 +2,7 @@ name: Tests coverage badge
 on:
   push:
     branches:
-      - tests-coverage
+      - main
 
 jobs:
   tests:
