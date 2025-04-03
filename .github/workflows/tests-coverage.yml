@@ -33,4 +33,4 @@ jobs:
           git switch -c coverage-badges
           git add .
           git commit -m "Update coverage badge"
-          git push
+          git push --set-upstream origin coverage-badges
