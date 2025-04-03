@@ -1,6 +1,6 @@
 name: Tests coverage badge
 on:
-  push:
+  pull_request:
     branches:
       - main
 
