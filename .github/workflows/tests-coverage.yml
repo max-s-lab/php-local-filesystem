@@ -1,8 +1,8 @@
 name: Tests coverage badge
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - tests-coverage
 
 jobs:
   tests:
@@ -30,8 +30,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git switch main
-          git switch -c coverage-badges
+          git switch coverage-badges-${{ github.sha }}
           git add tests/coverage/xml/clover.xml
           git add tests/coverage/badge.svg
           git commit -m "Update coverage badge"
