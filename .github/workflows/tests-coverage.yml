@@ -30,10 +30,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git switch -c coverage-badges-${{ github.sha }}
+          git switch -c coverage-badge-${{ github.sha }}
           git add tests/coverage/xml/clover.xml
           git add tests/coverage/badge.svg
           git commit -m "Update coverage badge"
-          git push --set-upstream origin coverage-badges-${{ github.sha }}
+          git push --set-upstream origin coverage-badge-${{ github.sha }}
         env:
           GH_TOKEN: ${{ github.token }}
