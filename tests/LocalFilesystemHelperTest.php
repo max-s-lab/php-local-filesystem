@@ -13,27 +13,51 @@ class LocalFilesystemHelperTest extends TestCase
     private const TEST_DIRECTORY_NAME = 'test';
 
     /**
-     * @dataProvider pathProvider
+     * @dataProvider provideNormalizePathData
      */
-    public function testNormalizePath(string $expectedPath, string $sourcePath): void
+    public function testNormalizePath(string $sourcePath, string $expectedValue): void
     {
-        $this->assertEquals($expectedPath, LocalFilesystemHelper::normalizePath($sourcePath));
+        $this->assertEquals($expectedValue, LocalFilesystemHelper::normalizePath($sourcePath));
+    }
+
+    /**
+     * @dataProvider provideFilepermsToOctatValueData
+     */
+    public function testFilepermsToOctatValue(int $fileperms, string $expectedValue): void
+    {
+        $this->assertEquals($expectedValue, LocalFilesystemHelper::filepermsToOctatValue($fileperms));
     }
 
     /**
      * @return array{string,string}[]
      */
-    public static function pathProvider(): array
+    public static function provideNormalizePathData(): array
     {
-        $basePath = str_replace('/', DIRECTORY_SEPARATOR, __DIR__);
-        $expectedPath = $basePath . DIRECTORY_SEPARATOR . self::TEST_DIRECTORY_NAME;
+        $expectedPath = str_replace(
+            '/',
+            DIRECTORY_SEPARATOR,
+            __DIR__
+        ) . DIRECTORY_SEPARATOR . self::TEST_DIRECTORY_NAME;
 
         return [
-            [$expectedPath, "{$basePath}/" . self::TEST_DIRECTORY_NAME],
-            [$expectedPath, "{$basePath}\\" . self::TEST_DIRECTORY_NAME],
-            [$expectedPath, "{$basePath}//" . self::TEST_DIRECTORY_NAME],
-            [$expectedPath, "{$basePath}\\\\" . self::TEST_DIRECTORY_NAME],
-            [$expectedPath, "{$basePath}/" . self::TEST_DIRECTORY_NAME . '  '],
+            [__DIR__ . '/' . self::TEST_DIRECTORY_NAME, $expectedPath],
+            [__DIR__ . '/' . self::TEST_DIRECTORY_NAME . '  ', $expectedPath],
+            [__DIR__ . '\\' . self::TEST_DIRECTORY_NAME, $expectedPath],
+            [__DIR__ . '//' . self::TEST_DIRECTORY_NAME, $expectedPath],
+            [__DIR__ . '\\\\' . self::TEST_DIRECTORY_NAME, $expectedPath],
+        ];
+    }
+
+    /**
+     * @return array{int,string}[]
+     */
+    public static function provideFilepermsToOctatValueData(): array
+    {
+        return [
+            [0100644, '0644'],
+            [0040755, '0755'],
+            [0100777, '0777'],
+            [0120777, '0777'],
         ];
     }
 }
