@@ -21,7 +21,7 @@ class LocalFilesystemHelperTest extends TestCase
     }
 
     /**
-     * @return array{array{string,string}}
+     * @return array{string,string}[]
      */
     public static function pathProvider(): array
     {

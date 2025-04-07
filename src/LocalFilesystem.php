@@ -9,6 +9,8 @@ use SplFileInfo;
 
 /**
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
+ *
+ * @phpstan-type WriteOptionalParams array{directoryPermissions?: int, filePermissions?: int}
  */
 class LocalFilesystem
 {
@@ -109,7 +111,7 @@ class LocalFilesystem
      *
      * @param string $path relative path
      * @param mixed $content
-     * @param array{flags?: int, directoryPermissions?: int, filePermissions?: int} $optionalParams
+     * @param WriteOptionalParams|array{flags?: int} $optionalParams
      *
      * @throws LocalFilesystemException
      */
@@ -232,8 +234,7 @@ class LocalFilesystem
      *
      * @param string $oldPath relative oldPath
      * @param string $newPath relative newPath
-     *
-     * @param array{directoryPermissions?: int, filePermissions?: int} $optionalParams
+     * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException
      */
@@ -255,8 +256,7 @@ class LocalFilesystem
      *
      * @param string $oldPath relative oldPath
      * @param string $newPath relative newPath
-     *
-     * @param array{directoryPermissions?: int, filePermissions?: int} $optionalParams
+     * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException
      */
@@ -375,7 +375,7 @@ class LocalFilesystem
     }
 
     /**
-     * @param array{directoryPermissions?: int} $params
+     * @param WriteOptionalParams $params
      */
     private function getDirectoryPermissionsFromParams(array $params): int
     {
@@ -383,7 +383,7 @@ class LocalFilesystem
     }
 
     /**
-     * @param array{filePermissions?: int} $params
+     * @param WriteOptionalParams $params
      */
     private function getFilePermissionsFromParams(array $params): int
     {
