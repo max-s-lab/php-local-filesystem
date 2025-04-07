@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744031866">
-  <project timestamp="1744031866">
+<coverage generated="1744034527">
+  <project timestamp="1744034527">
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystem.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystem" namespace="global">
         <metrics complexity="44" methods="26" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="81" elements="108" coveredelements="106"/>
@@ -129,8 +129,8 @@
       </class>
       <line num="10" type="method" name="normalizePath" visibility="public" complexity="1" crap="1" count="36"/>
       <line num="12" type="stmt" count="36"/>
-      <line num="15" type="method" name="filepermsToOctatValue" visibility="public" complexity="1" crap="1" count="4"/>
-      <line num="17" type="stmt" count="4"/>
+      <line num="15" type="method" name="filepermsToOctatValue" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="17" type="stmt" count="8"/>
       <metrics loc="20" ncloc="17" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <metrics files="3" loc="436" ncloc="284" classes="3" methods="29" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="85" coveredstatements="84" elements="114" coveredelements="112"/>
