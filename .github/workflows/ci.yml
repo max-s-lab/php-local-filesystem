@@ -46,7 +46,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
 
-      - name: Run Unit Tests
+      - name: Run tests
         run: vendor/bin/phpunit
 
       - name: Run PHPStan

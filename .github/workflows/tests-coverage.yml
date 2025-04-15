@@ -17,7 +17,7 @@ jobs:
         with:
           php-version: "7.4"
 
-      - name: Run Unit Tests
+      - name: Run tests
         run: vendor/bin/phpunit
 
       - name: Make code coverage badge
