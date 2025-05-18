@@ -6,6 +6,7 @@ use MaxSLab\Filesystem\Local\LocalFilesystemException;
 use MaxSLab\Filesystem\Local\LocalFilesystemHelper;
 use MaxSLab\Filesystem\Local\LocalFilesystem;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
 use stdClass;
 
 /**
@@ -305,5 +306,15 @@ class LocalFilesystemTest extends TestCase
     {
         $this->expectException(LocalFilesystemException::class);
         $this->filesystem->moveFile(self::NOT_EXISTING_FILE_NAME, self::MOVING_PATH);
+    }
+
+    public function testDeletingNotExistingDirectoryByFullPath(): void
+    {
+        $class = new ReflectionClass(LocalFilesystem::class);
+        $method = $class->getMethod('deleteDirectoryByFullPath');
+        $method->setAccessible(true);
+
+        $this->expectException(LocalFilesystemException::class);
+        $method->invokeArgs($this->filesystem, [self::NOT_EXISTING_DIRECTORY_NAME]);
     }
 }
