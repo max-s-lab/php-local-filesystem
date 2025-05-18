@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1744034527">
-  <project timestamp="1744034527">
+<coverage generated="1747572795">
+  <project timestamp="1747572795">
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystem.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystem" namespace="global">
-        <metrics complexity="44" methods="26" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="81" elements="108" coveredelements="106"/>
+        <metrics complexity="44" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="108" coveredelements="108"/>
       </class>
-      <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="31"/>
-      <line num="35" type="stmt" count="31"/>
-      <line num="36" type="stmt" count="31"/>
-      <line num="37" type="stmt" count="31"/>
+      <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="32"/>
+      <line num="35" type="stmt" count="32"/>
+      <line num="36" type="stmt" count="32"/>
+      <line num="37" type="stmt" count="32"/>
       <line num="43" type="method" name="prepareFullPath" visibility="public" complexity="1" crap="1" count="31"/>
       <line num="45" type="stmt" count="31"/>
       <line num="51" type="method" name="fileExists" visibility="public" complexity="1" crap="1" count="4"/>
@@ -101,9 +101,9 @@
       <line num="350" type="method" name="createDirectoryByFullPath" visibility="private" complexity="2" crap="2" count="21"/>
       <line num="352" type="stmt" count="21"/>
       <line num="353" type="stmt" count="1"/>
-      <line num="360" type="method" name="deleteDirectoryByFullPath" visibility="private" complexity="2" crap="2.50" count="2"/>
-      <line num="362" type="stmt" count="2"/>
-      <line num="363" type="stmt" count="0"/>
+      <line num="360" type="method" name="deleteDirectoryByFullPath" visibility="private" complexity="2" crap="2" count="3"/>
+      <line num="362" type="stmt" count="3"/>
+      <line num="363" type="stmt" count="1"/>
       <line num="370" type="method" name="deleteFileByFullPath" visibility="private" complexity="2" crap="2" count="3"/>
       <line num="372" type="stmt" count="3"/>
       <line num="373" type="stmt" count="1"/>
@@ -111,16 +111,16 @@
       <line num="382" type="stmt" count="16"/>
       <line num="388" type="method" name="getFilePermissionsFromParams" visibility="private" complexity="1" crap="1" count="13"/>
       <line num="390" type="stmt" count="13"/>
-      <line num="393" type="method" name="getLastErrorAsException" visibility="private" complexity="1" crap="1" count="13"/>
-      <line num="395" type="stmt" count="13"/>
-      <metrics loc="398" ncloc="252" classes="1" methods="26" coveredmethods="25" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="81" elements="108" coveredelements="106"/>
+      <line num="393" type="method" name="getLastErrorAsException" visibility="private" complexity="1" crap="1" count="14"/>
+      <line num="395" type="stmt" count="14"/>
+      <metrics loc="398" ncloc="252" classes="1" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="82" coveredstatements="82" elements="108" coveredelements="108"/>
     </file>
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystemException.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystemException" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
-      <line num="15" type="stmt" count="14"/>
+      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="15"/>
+      <line num="15" type="stmt" count="15"/>
       <metrics loc="18" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystemHelper.php">
@@ -133,6 +133,6 @@
       <line num="17" type="stmt" count="8"/>
       <metrics loc="20" ncloc="17" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
-    <metrics files="3" loc="436" ncloc="284" classes="3" methods="29" coveredmethods="28" conditionals="0" coveredconditionals="0" statements="85" coveredstatements="84" elements="114" coveredelements="112"/>
+    <metrics files="3" loc="436" ncloc="284" classes="3" methods="29" coveredmethods="29" conditionals="0" coveredconditionals="0" statements="85" coveredstatements="85" elements="114" coveredelements="114"/>
   </project>
 </coverage>
