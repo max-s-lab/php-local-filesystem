@@ -1,11 +1,12 @@
 <h1 align="center">
-  MaxSLab PHP Local Filesystem Library
+  PHP Local Filesystem Library
 </h1>
 
 ![php 7.4+](https://img.shields.io/badge/php-min%207.4.0-blue.svg)
 ![Code Coverage Badge](./tests/coverage/badge.svg)
 ![PHPStan Level 10](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/max-s-lab/php-local-filesystem/blob/master/LICENSE)
+[![Total Downloads](https://img.shields.io/packagist/dt/max-s-lab/php-local-filesystem.svg)](https://packagist.org/packages/max-s-lab/php-local-filesystem)
 
 ## Installation
 
