@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MaxSLab\Filesystem\Local\Tests;
 
 use MaxSLab\Filesystem\Local\LocalFilesystemException;
