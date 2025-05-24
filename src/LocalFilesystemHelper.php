@@ -2,6 +2,13 @@
 
 namespace MaxSLab\Filesystem\Local;
 
+use function str_replace;
+use function trim;
+use function substr;
+use function sprintf;
+
+use const DIRECTORY_SEPARATOR;
+
 /**
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  */

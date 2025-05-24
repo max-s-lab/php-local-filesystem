@@ -9,6 +9,13 @@ use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use stdClass;
 
+use function microtime;
+use function umask;
+use function file_put_contents;
+use function fgets;
+use function fclose;
+use function time;
+
 /**
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  */
