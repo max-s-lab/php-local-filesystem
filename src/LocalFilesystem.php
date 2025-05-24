@@ -7,6 +7,27 @@ use RecursiveIteratorIterator;
 use FilesystemIterator;
 use SplFileInfo;
 
+use function is_file;
+use function is_dir;
+use function fileperms;
+use function glob;
+use function file_put_contents;
+use function file_get_contents;
+use function fopen;
+use function mime_content_type;
+use function filesize;
+use function filemtime;
+use function copy;
+use function rename;
+use function dirname;
+use function chmod;
+use function mkdir;
+use function rmdir;
+use function unlink;
+use function error_get_last;
+
+use const DIRECTORY_SEPARATOR;
+
 /**
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  *

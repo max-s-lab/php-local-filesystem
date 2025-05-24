@@ -5,6 +5,10 @@ namespace MaxSLab\Filesystem\Local\Tests;
 use MaxSLab\Filesystem\Local\LocalFilesystemHelper;
 use PHPUnit\Framework\TestCase;
 
+use function str_replace;
+
+use const DIRECTORY_SEPARATOR;
+
 /**
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  */
