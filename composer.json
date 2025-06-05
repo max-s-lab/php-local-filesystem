@@ -19,6 +19,11 @@
             "email": "spirkov.2001@mail.ru"
         }
     ],
+    "scripts": {
+        "lint:check": "./vendor/bin/php-cs-fixer check",
+        "lint:fix": "./vendor/bin/php-cs-fixer fix",
+        "phpstan:analyse": "./vendor/bin/phpstan analyse ."
+    },
     "require": {
         "php": ">=7.4",
         "ext-fileinfo": "*"
