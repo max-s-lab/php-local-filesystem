@@ -27,8 +27,6 @@ return (new PhpCsFixer\Config())
         'clean_namespace' => true,
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
-        'constant_case' => true,
-        'control_structure_braces' => true,
         'explicit_string_variable' => true,
         'increment_style' => ['style' => 'post'],
         'list_syntax' => ['syntax' => 'short'],
