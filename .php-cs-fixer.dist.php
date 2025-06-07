@@ -15,6 +15,7 @@ return (new PhpCsFixer\Config())
         'assign_null_coalescing_to_coalesce_equal' => true,
         'binary_operator_spaces' => true,
         'blank_line_before_statement' => true,
+        'braces_position' => ['allow_single_line_anonymous_functions' => false],
         'cast_spaces' => true,
         'concat_space' => ['spacing' => 'one'],
         'class_attributes_separation' => [
@@ -35,6 +36,7 @@ return (new PhpCsFixer\Config())
         'multiline_comment_opening_closing' => true,
         'native_function_casing' => true,
         'native_type_declaration_casing' => true,
+        'new_with_parentheses' => ['anonymous_class' => false],
         'no_alternative_syntax' => true,
         'no_extra_blank_lines' => [
             'tokens' => [
