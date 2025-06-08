@@ -27,14 +27,6 @@ class LocalFilesystemHelperTest extends TestCase
     }
 
     /**
-     * @dataProvider provideFilepermsToOctatValueData
-     */
-    public function testFilepermsToOctatValue(int $fileperms, string $expectedValue): void
-    {
-        $this->assertEquals($expectedValue, LocalFilesystemHelper::filepermsToOctatValue($fileperms));
-    }
-
-    /**
      * @return array{string,string}[]
      */
     public static function provideNormalizePathData(): array
@@ -52,6 +44,14 @@ class LocalFilesystemHelperTest extends TestCase
             [__DIR__ . '//' . self::TEST_DIRECTORY_NAME, $expectedPath],
             [__DIR__ . '\\\\' . self::TEST_DIRECTORY_NAME, $expectedPath],
         ];
+    }
+
+    /**
+     * @dataProvider provideFilepermsToOctatValueData
+     */
+    public function testFilepermsToOctatValue(int $fileperms, string $expectedValue): void
+    {
+        $this->assertEquals($expectedValue, LocalFilesystemHelper::filepermsToOctatValue($fileperms));
     }
 
     /**
