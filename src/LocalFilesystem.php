@@ -113,10 +113,10 @@ class LocalFilesystem
     /**
      * @param string $pattern relative pattern
      *
+     * @throws LocalFilesystemException
+     *
      * @return string[] an array containing the matched files/directories, an empty array
      * if no file matched
-     *
-     * @throws LocalFilesystemException
      */
     public function listPathnames(string $pattern, int $flags = 0): array
     {
@@ -154,9 +154,9 @@ class LocalFilesystem
     /**
      * @param string $path relative path
      *
-     * @return string file content
-     *
      * @throws LocalFilesystemException
+     *
+     * @return string file content
      */
     public function readFile(string $path): string
     {
@@ -172,9 +172,9 @@ class LocalFilesystem
     /**
      * @param string $path relative path
      *
-     * @return resource stream for reading file content
-     *
      * @throws LocalFilesystemException
+     *
+     * @return resource stream for reading file content
      */
     public function readFileAsStream(string $path)
     {
@@ -190,9 +190,9 @@ class LocalFilesystem
     /**
      * @param string $path relative path
      *
-     * @return int the size of the file in bytes
-     *
      * @throws LocalFilesystemException
+     *
+     * @return int the size of the file in bytes
      */
     public function getFileSize(string $path): int
     {
@@ -208,9 +208,9 @@ class LocalFilesystem
     /**
      * @param string $path relative path
      *
-     * @return string the content type in MIME format, like text/plain or application/octet-stream.
-     *
      * @throws LocalFilesystemException
+     *
+     * @return string the content type in MIME format, like text/plain or application/octet-stream.
      */
     public function getFileMimeType(string $path): string
     {
@@ -226,10 +226,10 @@ class LocalFilesystem
     /**
      * @param string $path relative path
      *
+     * @throws LocalFilesystemException
+     *
      * @return int the time the file was last modified. The time is returned as a Unix timestamp,
      * which is suitable for the date function.
-     *
-     * @throws LocalFilesystemException
      */
     public function getFileLastModifiedTime(string $path): int
     {
