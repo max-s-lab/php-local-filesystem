@@ -4,10 +4,6 @@ includes:
 parameters:
     level: 10
 
-    parallel:
-        processTimeout: 90.0
-        maximumNumberOfProcesses: 12
-
     type_coverage:
         return: 100
         param: 100
