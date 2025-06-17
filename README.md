@@ -19,7 +19,7 @@ php composer.phar require max-s-lab/php-local-filesystem
 or add
 
 ```json
-"max-s-lab/php-local-filesystem": "^1.0"
+"max-s-lab/php-local-filesystem": "^2.0"
 ```
 
 to the `require` section of your `composer.json` file.
