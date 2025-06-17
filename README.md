@@ -2,7 +2,7 @@
   PHP Local Filesystem Library
 </h1>
 
-![php 8.0+](https://img.shields.io/badge/php-min%208.0.0-blue.svg)
+![php 7.4+](https://img.shields.io/badge/php-min%207.4.0-787CB5.svg)
 ![Code Coverage Badge](./tests/coverage/badge.svg)
 ![PHPStan Level 10](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/max-s-lab/php-local-filesystem/blob/master/LICENSE)
@@ -10,19 +10,25 @@
 
 ## Installation
 
-Run
+Run command in console:
 
 ```cmd
 php composer.phar require max-s-lab/php-local-filesystem
 ```
 
-or add
+or add next line to the `require` section of your `composer.json` file:
+
+#### PHP7.4
+
+```json
+"max-s-lab/php-local-filesystem": "^1.0"
+```
+
+#### PHP8+
 
 ```json
 "max-s-lab/php-local-filesystem": "^2.0"
 ```
-
-to the `require` section of your `composer.json` file.
 
 ## Usage
 
