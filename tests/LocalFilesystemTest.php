@@ -121,7 +121,18 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
         $this->assertTrue($this->filesystem->fileExists(self::FILE_NAME));
 
-        $this->filesystem->writeToFile(self::DIRECTORY_NAME . '/' . self::FILE_NAME, self::FILE_CONTENT);
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $this->filesystem->writeToFile($filePath, self::FILE_CONTENT);
+        $this->assertTrue($this->filesystem->fileExists($filePath));
+    }
+
+    public function testWritingToFileWheDirectoryExists(): void
+    {
+        $this->filesystem->createDirectory(self::DIRECTORY_NAME);
+
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $this->filesystem->writeToFile($filePath, self::FILE_CONTENT);
+        $this->assertTrue($this->filesystem->fileExists($filePath));
     }
 
     public function testWritingToFileByFilesystemWithCustomPermissions(): void
@@ -133,10 +144,9 @@ class LocalFilesystemTest extends TestCase
             ],
         ]);
 
-        $filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
-        $this->assertTrue($filesystem->fileExists(self::FILE_NAME));
-
-        $filesystem->writeToFile(self::DIRECTORY_NAME . '/' . self::FILE_NAME, self::FILE_CONTENT);
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $filesystem->writeToFile($filePath, self::FILE_CONTENT);
+        $this->assertTrue($filesystem->fileExists($filePath));
 
         $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
             $filesystem->getPermissions(self::DIRECTORY_NAME),
