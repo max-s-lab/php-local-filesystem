@@ -37,9 +37,9 @@ use const DIRECTORY_SEPARATOR;
  */
 class LocalFilesystem
 {
-    protected int $defaultDirectoryPermissions;
+    private int $defaultDirectoryPermissions;
 
-    protected int $defaultFilePermissions;
+    private int $defaultFilePermissions;
 
     /**
      * @param string $location The full path to the directory where
@@ -52,7 +52,7 @@ class LocalFilesystem
      * } $optionalParams
      */
     public function __construct(
-        protected string $location,
+        private string $location,
         array $optionalParams = [],
     ) {
         $this->defaultDirectoryPermissions = $optionalParams['defaultPermissions']['directory'] ?? 0755;
