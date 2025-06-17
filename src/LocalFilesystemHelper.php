@@ -43,7 +43,7 @@ class LocalFilesystemHelper
      *
      * @return string octal mode permissions
      */
-    public static function filepermsToOctatValue(int $fileperms): string
+    public static function filepermsToOctalValue(int $fileperms): string
     {
         return substr(sprintf('%o', $fileperms), -4);
     }
