@@ -42,7 +42,7 @@ class LocalFilesystemTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->filesystem = new LocalFilesystem(__DIR__ . '/tmp/' . (string) microtime(true));
+        $this->filesystem = new LocalFilesystem($this->getLocation());
 
         // Fix test on differrent platforms
         umask(0);
@@ -116,13 +116,45 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->getPermissions(self::NOT_EXISTING_FILE_NAME);
     }
 
-    public function testWritingToFileAndDeletingFile(): void
+    public function testWritingToFile(): void
     {
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
         $this->assertTrue($this->filesystem->fileExists(self::FILE_NAME));
 
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $this->filesystem->writeToFile($filePath, self::FILE_CONTENT);
+        $this->assertTrue($this->filesystem->fileExists($filePath));
+    }
+
+    public function testWritingToFileWheDirectoryExists(): void
+    {
         $this->filesystem->createDirectory(self::DIRECTORY_NAME);
-        $this->filesystem->writeToFile(self::DIRECTORY_NAME . '/' . self::FILE_NAME, self::FILE_CONTENT);
+
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $this->filesystem->writeToFile($filePath, self::FILE_CONTENT);
+        $this->assertTrue($this->filesystem->fileExists($filePath));
+    }
+
+    public function testWritingToFileByFilesystemWithCustomPermissions(): void
+    {
+        $filesystem = new LocalFilesystem($this->getLocation(), [
+            'defaultPermissions' => [
+                'directory' => 0777,
+                'file' => 0666,
+            ],
+        ]);
+
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $filesystem->writeToFile($filePath, self::FILE_CONTENT);
+        $this->assertTrue($filesystem->fileExists($filePath));
+
+        $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
+            $filesystem->getPermissions(self::DIRECTORY_NAME),
+        ));
+
+        $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
+            $filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
+        ));
     }
 
     public function testWritingToFileWithPermissions(): void
@@ -325,5 +357,10 @@ class LocalFilesystemTest extends TestCase
 
         $this->expectException(LocalFilesystemException::class);
         $method->invokeArgs($this->filesystem, [self::NOT_EXISTING_DIRECTORY_NAME]);
+    }
+
+    private function getLocation(): string
+    {
+        return __DIR__ . '/tmp/' . (string) microtime(true);
     }
 }

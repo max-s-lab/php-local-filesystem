@@ -409,7 +409,7 @@ class LocalFilesystem
      */
     private function getFilePermissionsFromParams(array $params): int
     {
-        return $params['filePermissions'] ?? $this->defaultDirectoryPermissions;
+        return $params['filePermissions'] ?? $this->defaultFilePermissions;
     }
 
     private function getLastErrorAsException(): LocalFilesystemException
