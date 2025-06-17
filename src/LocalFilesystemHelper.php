@@ -16,11 +16,33 @@ use const DIRECTORY_SEPARATOR;
  */
 class LocalFilesystemHelper
 {
+    /**
+     * Path normalization.
+     *
+     * Example:
+     * ```php
+     * LocalFilesystemHelper::normalizePath('/var//www/html/');
+     * ```
+     *
+     * @return string normalized path
+     */
     public static function normalizePath(string $path): string
     {
         return str_replace(['/', '\\', '//', '\\\\'], DIRECTORY_SEPARATOR, trim($path));
     }
 
+    /**
+     * Convert numeric mode permissions to octal mode permissions.
+     *
+     * Example:
+     * ```php
+     * LocalFilesystem::filepermsToOctatValue(0100644);
+     * ```
+     *
+     * @param int numeric mode permissions
+     *
+     * @return string octal mode permissions
+     */
     public static function filepermsToOctatValue(int $fileperms): string
     {
         return substr(sprintf('%o', $fileperms), -4);
