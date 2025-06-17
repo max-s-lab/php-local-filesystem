@@ -37,8 +37,6 @@ use const DIRECTORY_SEPARATOR;
  */
 class LocalFilesystem
 {
-    protected string $location;
-
     protected int $defaultDirectoryPermissions;
 
     protected int $defaultFilePermissions;
@@ -53,9 +51,10 @@ class LocalFilesystem
      *    }
      * } $optionalParams
      */
-    public function __construct(string $location, array $optionalParams = [])
-    {
-        $this->location = $location;
+    public function __construct(
+        protected string $location,
+        array $optionalParams = [],
+    ) {
         $this->defaultDirectoryPermissions = $optionalParams['defaultPermissions']['directory'] ?? 0755;
         $this->defaultFilePermissions = $optionalParams['defaultPermissions']['file'] ?? 0644;
     }
@@ -307,7 +306,7 @@ class LocalFilesystem
     {
         $this->createDirectoryByFullPath(
             $this->prepareFullPath($path),
-            $permissions ?? $this->defaultDirectoryPermissions
+            $permissions ?? $this->defaultDirectoryPermissions,
         );
     }
 
@@ -328,7 +327,7 @@ class LocalFilesystem
 
         $contents = new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS),
-            RecursiveIteratorIterator::CHILD_FIRST
+            RecursiveIteratorIterator::CHILD_FIRST,
         );
 
         /** @var SplFileInfo $content */

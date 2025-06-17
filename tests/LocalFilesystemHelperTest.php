@@ -31,11 +31,9 @@ class LocalFilesystemHelperTest extends TestCase
      */
     public static function provideNormalizePathData(): array
     {
-        $expectedPath = str_replace(
-            '/',
-            DIRECTORY_SEPARATOR,
-            __DIR__
-        ) . DIRECTORY_SEPARATOR . self::TEST_DIRECTORY_NAME;
+        $expectedPath = str_replace('/', DIRECTORY_SEPARATOR, __DIR__)
+            . DIRECTORY_SEPARATOR
+            . self::TEST_DIRECTORY_NAME;
 
         return [
             [__DIR__ . '/' . self::TEST_DIRECTORY_NAME, $expectedPath],

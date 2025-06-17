@@ -70,7 +70,7 @@ class LocalFilesystemTest extends TestCase
 
         file_put_contents(
             $this->filesystem->prepareFullPath(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
-            self::FILE_CONTENT
+            self::FILE_CONTENT,
         );
 
         $this->filesystem->createDirectory(self::DIRECTORY_NAME . '/' . self::DIRECTORY_NAME);
@@ -100,7 +100,7 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->setPermissions(self::DIRECTORY_NAME, 0777);
 
         $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
         ));
     }
 
@@ -133,11 +133,11 @@ class LocalFilesystemTest extends TestCase
         ]);
 
         $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
         ));
 
         $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
         ));
     }
 
@@ -241,7 +241,7 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
         $this->assertEquals(
             [$this->filesystem->prepareFullPath(self::FILE_NAME)],
-            $this->filesystem->listPathnames('*')
+            $this->filesystem->listPathnames('*'),
         );
 
         $this->assertEquals([], $this->filesystem->listPathnames(self::NOT_EXISTING_DIRECTORY_NAME));
@@ -271,11 +271,11 @@ class LocalFilesystemTest extends TestCase
         ]);
 
         $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
         ));
 
         $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::COPYING_PATH)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::COPYING_PATH),
         ));
     }
 
@@ -303,11 +303,11 @@ class LocalFilesystemTest extends TestCase
         ]);
 
         $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
         ));
 
         $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::MOVING_PATH)
+            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::MOVING_PATH),
         ));
     }
 

@@ -8,12 +8,8 @@ $finder = (new PhpCsFixer\Finder())
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PSR12' => true,
+        '@PER-CS2.0' => true,
         'align_multiline_comment' => true,
-        'array_indentation' => true,
-        'array_syntax' => [
-            'syntax' => 'short',
-        ],
         'assign_null_coalescing_to_coalesce_equal' => true,
         'binary_operator_spaces' => true,
         'blank_line_before_statement' => [
@@ -26,10 +22,6 @@ return (new PhpCsFixer\Config())
         ],
         'braces_position' => [
             'allow_single_line_anonymous_functions' => false,
-        ],
-        'cast_spaces' => true,
-        'concat_space' => [
-            'spacing' => 'one',
         ],
         'class_attributes_separation' => [
             'elements' => [
@@ -61,9 +53,6 @@ return (new PhpCsFixer\Config())
         'multiline_whitespace_before_semicolons' => true,
         'native_function_casing' => true,
         'native_type_declaration_casing' => true,
-        'new_with_parentheses' => [
-            'anonymous_class' => false,
-        ],
         'no_alternative_syntax' => true,
         'no_alias_language_construct_call' => true,
         'no_empty_comment' => true,
@@ -107,7 +96,6 @@ return (new PhpCsFixer\Config())
         'self_static_accessor' => true,
         'simple_to_complex_string_variable' => true,
         'single_class_element_per_statement' => true,
-        'single_line_empty_body' => true,
         'single_line_comment_spacing' => true,
         'single_line_comment_style' => [
             'comment_types' => [
@@ -117,7 +105,6 @@ return (new PhpCsFixer\Config())
         'single_quote' => true,
         'standardize_increment' => true,
         'ternary_to_null_coalescing' => true,
-        'trailing_comma_in_multiline' => true,
         'trim_array_spaces' => true,
         'type_declaration_spaces' => [
             'elements' => [
@@ -131,9 +118,6 @@ return (new PhpCsFixer\Config())
             'equal' => false,
             'identical' => false,
             'less_and_greater' => false,
-        ],
-        'function_declaration' => [
-            'closure_fn_spacing' => 'none',
         ],
         'php_unit_data_provider_method_order' => true,
         'php_unit_method_casing' => true,
