@@ -139,11 +139,11 @@ class LocalFilesystemTest extends TestCase
         $filesystem->writeToFile(self::DIRECTORY_NAME . '/' . self::FILE_NAME, self::FILE_CONTENT);
 
         $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
+            $filesystem->getPermissions(self::DIRECTORY_NAME),
         ));
 
         $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
+            $filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
         ));
     }
 
