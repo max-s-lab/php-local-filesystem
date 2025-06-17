@@ -21,7 +21,7 @@ class LocalFilesystemHelper
         return str_replace(['/', '\\', '//', '\\\\'], DIRECTORY_SEPARATOR, trim($path));
     }
 
-    public static function filepermsToOctatValue(int $fileperms): string
+    public static function filepermsToOctalValue(int $fileperms): string
     {
         return substr(sprintf('%o', $fileperms), -4);
     }
