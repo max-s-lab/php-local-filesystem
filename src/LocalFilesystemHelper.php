@@ -39,7 +39,7 @@ class LocalFilesystemHelper
      * LocalFilesystem::filepermsToOctatValue(0100644);
      * ```
      *
-     * @param int numeric mode permissions
+     * @param int $fileperms numeric mode permissions
      *
      * @return string octal mode permissions
      */
