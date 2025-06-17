@@ -97,8 +97,8 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->setPermissions(self::DIRECTORY_NAME, 0777);
 
         $permissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
-        $permissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($permissions);
-        $this->assertEquals('0777', $permissionsOctatValue);
+        $permissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($permissions);
+        $this->assertEquals('0777', $permissionsOctalValue);
     }
 
     public function testSetPermissionsOnNotExistingDirectory(): void
@@ -146,12 +146,12 @@ class LocalFilesystemTest extends TestCase
         $this->assertTrue($filesystem->fileExists($filePath));
 
         $dirPermissions = $filesystem->getPermissions(self::DIRECTORY_NAME);
-        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
-        $this->assertEquals('0777', $dirPermissionsOctatValue);
+        $dirPermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctalValue);
 
         $filePermissions = $filesystem->getPermissions($filePath);
-        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
-        $this->assertEquals('0666', $filePermissionsOctatValue);
+        $filePermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctalValue);
     }
 
     public function testWritingToFileWithPermissions(): void
@@ -165,12 +165,12 @@ class LocalFilesystemTest extends TestCase
         $this->assertTrue($this->filesystem->fileExists($filePath));
 
         $dirPermissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
-        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
-        $this->assertEquals('0777', $dirPermissionsOctatValue);
+        $dirPermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctalValue);
 
         $filePermissions = $this->filesystem->getPermissions($filePath);
-        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
-        $this->assertEquals('0666', $filePermissionsOctatValue);
+        $filePermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctalValue);
     }
 
     public function testWritingInvalidContentToFile(): void
@@ -306,12 +306,12 @@ class LocalFilesystemTest extends TestCase
         $this->assertTrue($this->filesystem->fileExists($copyingPath));
 
         $dirPermissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
-        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
-        $this->assertEquals('0777', $dirPermissionsOctatValue);
+        $dirPermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctalValue);
 
         $filePermissions = $this->filesystem->getPermissions($copyingPath);
-        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
-        $this->assertEquals('0666', $filePermissionsOctatValue);
+        $filePermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctalValue);
     }
 
     public function testCopyingNotExisitingFile(): void
@@ -343,12 +343,12 @@ class LocalFilesystemTest extends TestCase
         $this->assertTrue($this->filesystem->fileExists($movingPath));
 
         $dirPermissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
-        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
-        $this->assertEquals('0777', $dirPermissionsOctatValue);
+        $dirPermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctalValue);
 
         $filePermissions = $this->filesystem->getPermissions($movingPath);
-        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
-        $this->assertEquals('0666', $filePermissionsOctatValue);
+        $filePermissionsOctalValue = LocalFilesystemHelper::filepermsToOctalValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctalValue);
     }
 
     public function testMovingNotExisitingFile(): void

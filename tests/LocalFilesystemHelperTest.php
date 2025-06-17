@@ -45,17 +45,17 @@ class LocalFilesystemHelperTest extends TestCase
     }
 
     /**
-     * @dataProvider provideFilepermsToOctatValueData
+     * @dataProvider provideFilepermsToOctalValueData
      */
-    public function testFilepermsToOctatValue(int $fileperms, string $expectedValue): void
+    public function testFilepermsToOctalValue(int $fileperms, string $expectedValue): void
     {
-        $this->assertEquals($expectedValue, LocalFilesystemHelper::filepermsToOctatValue($fileperms));
+        $this->assertEquals($expectedValue, LocalFilesystemHelper::filepermsToOctalValue($fileperms));
     }
 
     /**
      * @return array{int,string}[]
      */
-    public static function provideFilepermsToOctatValueData(): array
+    public static function provideFilepermsToOctalValueData(): array
     {
         return [
             [0100644, '0644'],
