@@ -63,7 +63,6 @@ class LocalFilesystem
      * Preparing full path by relative path.
      *
      * Example:
-     *
      * ```php
      * // File
      * $result = $filesystem->prepareFullPath('file.txt');
@@ -238,7 +237,7 @@ class LocalFilesystem
     }
 
     /**
-     * This method will return the contents of the file as a string
+     * Reading a file.
      *
      * Example:
      * ```php

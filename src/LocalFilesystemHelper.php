@@ -21,7 +21,7 @@ class LocalFilesystemHelper
      *
      * Example:
      * ```php
-     * LocalFilesystemHelper::normalizePath('/var//www/html/');
+     * LocalFilesystemHelper::normalizePath(' /var//www/html/ ');
      * ```
      *
      * @return string normalized path
