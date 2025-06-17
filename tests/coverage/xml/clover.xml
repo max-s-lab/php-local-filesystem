@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1750146295">
-  <project timestamp="1750146295">
+<coverage generated="1750183826">
+  <project timestamp="1750183826">
     <file name="/home/runner/work/php-local-filesystem/php-local-filesystem/src/LocalFilesystem.php">
       <class name="MaxSLab\Filesystem\Local\LocalFilesystem" namespace="global">
         <metrics complexity="44" methods="26" coveredmethods="26" conditionals="0" coveredconditionals="0" statements="81" coveredstatements="81" elements="107" coveredelements="107"/>
       </class>
-      <line num="54" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="34"/>
-      <line num="58" type="stmt" count="34"/>
-      <line num="59" type="stmt" count="34"/>
-      <line num="65" type="method" name="prepareFullPath" visibility="public" complexity="1" crap="1" count="33"/>
-      <line num="67" type="stmt" count="33"/>
-      <line num="73" type="method" name="fileExists" visibility="public" complexity="1" crap="1" count="6"/>
-      <line num="75" type="stmt" count="6"/>
+      <line num="54" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="35"/>
+      <line num="58" type="stmt" count="35"/>
+      <line num="59" type="stmt" count="35"/>
+      <line num="65" type="method" name="prepareFullPath" visibility="public" complexity="1" crap="1" count="34"/>
+      <line num="67" type="stmt" count="34"/>
+      <line num="73" type="method" name="fileExists" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="75" type="stmt" count="9"/>
       <line num="81" type="method" name="directoryExists" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="83" type="stmt" count="4"/>
       <line num="91" type="method" name="setPermissions" visibility="public" complexity="1" crap="1" count="2"/>
@@ -21,11 +21,11 @@
       <line num="105" type="stmt" count="6"/>
       <line num="106" type="stmt" count="1"/>
       <line num="109" type="stmt" count="5"/>
-      <line num="120" type="method" name="listPathnames" visibility="public" complexity="2" crap="2" count="2"/>
-      <line num="122" type="stmt" count="2"/>
-      <line num="124" type="stmt" count="2"/>
+      <line num="120" type="method" name="listPathnames" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="122" type="stmt" count="3"/>
+      <line num="124" type="stmt" count="3"/>
       <line num="125" type="stmt" count="1"/>
-      <line num="128" type="stmt" count="1"/>
+      <line num="128" type="stmt" count="2"/>
       <line num="140" type="method" name="writeToFile" visibility="public" complexity="2" crap="2" count="16"/>
       <line num="142" type="stmt" count="16"/>
       <line num="144" type="stmt" count="16"/>
@@ -126,8 +126,8 @@
       <class name="MaxSLab\Filesystem\Local\LocalFilesystemHelper" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="19" type="method" name="normalizePath" visibility="public" complexity="1" crap="1" count="38"/>
-      <line num="21" type="stmt" count="38"/>
+      <line num="19" type="method" name="normalizePath" visibility="public" complexity="1" crap="1" count="39"/>
+      <line num="21" type="stmt" count="39"/>
       <line num="24" type="method" name="filepermsToOctatValue" visibility="public" complexity="1" crap="1" count="9"/>
       <line num="26" type="stmt" count="9"/>
       <metrics loc="29" ncloc="26" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
