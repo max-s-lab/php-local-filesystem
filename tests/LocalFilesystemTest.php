@@ -68,13 +68,10 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->createDirectory(self::DIRECTORY_NAME);
         $this->assertTrue($this->filesystem->directoryExists(self::DIRECTORY_NAME));
 
-        file_put_contents(
-            $this->filesystem->prepareFullPath(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
-            self::FILE_CONTENT,
-        );
+        $filePath = $this->filesystem->prepareFullPath(self::DIRECTORY_NAME . '/' . self::FILE_NAME);
+        file_put_contents($filePath, self::FILE_CONTENT);
 
         $this->filesystem->createDirectory(self::DIRECTORY_NAME . '/' . self::DIRECTORY_NAME);
-
         $this->filesystem->deleteDirectory(self::DIRECTORY_NAME);
         $this->assertFalse($this->filesystem->directoryExists(self::DIRECTORY_NAME));
     }
@@ -99,9 +96,9 @@ class LocalFilesystemTest extends TestCase
         $this->filesystem->createDirectory(self::DIRECTORY_NAME);
         $this->filesystem->setPermissions(self::DIRECTORY_NAME, 0777);
 
-        $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
-        ));
+        $permissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
+        $permissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($permissions);
+        $this->assertEquals('0777', $permissionsOctatValue);
     }
 
     public function testSetPermissionsOnNotExistingDirectory(): void
@@ -126,7 +123,7 @@ class LocalFilesystemTest extends TestCase
         $this->assertTrue($this->filesystem->fileExists($filePath));
     }
 
-    public function testWritingToFileWheDirectoryExists(): void
+    public function testWritingToFileWhenDirectoryExists(): void
     {
         $this->filesystem->createDirectory(self::DIRECTORY_NAME);
 
@@ -148,29 +145,32 @@ class LocalFilesystemTest extends TestCase
         $filesystem->writeToFile($filePath, self::FILE_CONTENT);
         $this->assertTrue($filesystem->fileExists($filePath));
 
-        $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $filesystem->getPermissions(self::DIRECTORY_NAME),
-        ));
+        $dirPermissions = $filesystem->getPermissions(self::DIRECTORY_NAME);
+        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctatValue);
 
-        $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
-        ));
+        $filePermissions = $filesystem->getPermissions($filePath);
+        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctatValue);
     }
 
     public function testWritingToFileWithPermissions(): void
     {
-        $this->filesystem->writeToFile(self::DIRECTORY_NAME . '/' . self::FILE_NAME, self::FILE_CONTENT, [
+        $filePath = self::DIRECTORY_NAME . '/' . self::FILE_NAME;
+        $this->filesystem->writeToFile($filePath, self::FILE_CONTENT, [
             'directoryPermissions' => 0777,
             'filePermissions' => 0666,
         ]);
 
-        $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
-        ));
+        $this->assertTrue($this->filesystem->fileExists($filePath));
 
-        $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::FILE_NAME),
-        ));
+        $dirPermissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
+        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctatValue);
+
+        $filePermissions = $this->filesystem->getPermissions($filePath);
+        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctatValue);
     }
 
     public function testWritingInvalidContentToFile(): void
@@ -255,11 +255,8 @@ class LocalFilesystemTest extends TestCase
     public function testGettingFileLastModifiedTime(): void
     {
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
-
-        $time = time();
         $result = $this->filesystem->getFileLastModifiedTime(self::FILE_NAME);
-
-        $this->assertTrue($result === $time || $result === $time + 1);
+        $this->assertEqualsWithDelta(time(), $result, 1);
     }
 
     public function testGettingNotExistingFileLastModifiedTime(): void
@@ -271,11 +268,12 @@ class LocalFilesystemTest extends TestCase
     public function testListPathnames(): void
     {
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
-        $this->assertEquals(
-            [$this->filesystem->prepareFullPath(self::FILE_NAME)],
-            $this->filesystem->listPathnames('*'),
-        );
+        $expectedResult = [$this->filesystem->prepareFullPath(self::FILE_NAME)];
+        $this->assertEquals($expectedResult, $this->filesystem->listPathnames('*'));
+    }
 
+    public function testListPathnamesByNotExistingDir(): void
+    {
         $this->assertEquals([], $this->filesystem->listPathnames(self::NOT_EXISTING_DIRECTORY_NAME));
     }
 
@@ -297,18 +295,23 @@ class LocalFilesystemTest extends TestCase
     public function testCopyingFileWithPermissions(): void
     {
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
-        $this->filesystem->copyFile(self::FILE_NAME, self::DIRECTORY_NAME . '/' . self::COPYING_PATH, [
+
+        $copyingPath = self::DIRECTORY_NAME . '/' . self::COPYING_PATH;
+        $this->filesystem->copyFile(self::FILE_NAME, $copyingPath, [
             'directoryPermissions' => 0777,
             'filePermissions' => 0666,
         ]);
 
-        $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
-        ));
+        $this->assertTrue($this->filesystem->fileExists(self::FILE_NAME));
+        $this->assertTrue($this->filesystem->fileExists($copyingPath));
 
-        $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::COPYING_PATH),
-        ));
+        $dirPermissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
+        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctatValue);
+
+        $filePermissions = $this->filesystem->getPermissions($copyingPath);
+        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctatValue);
     }
 
     public function testCopyingNotExisitingFile(): void
@@ -329,18 +332,23 @@ class LocalFilesystemTest extends TestCase
     public function testMovingFileWithPermissions(): void
     {
         $this->filesystem->writeToFile(self::FILE_NAME, self::FILE_CONTENT);
-        $this->filesystem->moveFile(self::FILE_NAME, self::DIRECTORY_NAME . '/' . self::MOVING_PATH, [
+
+        $movingPath = self::DIRECTORY_NAME . '/' . self::MOVING_PATH;
+        $this->filesystem->moveFile(self::FILE_NAME, $movingPath, [
             'directoryPermissions' => 0777,
             'filePermissions' => 0666,
         ]);
 
-        $this->assertEquals('0777', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME),
-        ));
+        $this->assertFalse($this->filesystem->fileExists(self::FILE_NAME));
+        $this->assertTrue($this->filesystem->fileExists($movingPath));
 
-        $this->assertEquals('0666', LocalFilesystemHelper::filepermsToOctatValue(
-            $this->filesystem->getPermissions(self::DIRECTORY_NAME . '/' . self::MOVING_PATH),
-        ));
+        $dirPermissions = $this->filesystem->getPermissions(self::DIRECTORY_NAME);
+        $dirPermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($dirPermissions);
+        $this->assertEquals('0777', $dirPermissionsOctatValue);
+
+        $filePermissions = $this->filesystem->getPermissions($movingPath);
+        $filePermissionsOctatValue = LocalFilesystemHelper::filepermsToOctatValue($filePermissions);
+        $this->assertEquals('0666', $filePermissionsOctatValue);
     }
 
     public function testMovingNotExisitingFile(): void
