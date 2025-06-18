@@ -409,23 +409,23 @@ class LocalFilesystem
      * ]);
      * ```
      *
-     * @param string $oldPath relative old path
-     * @param string $newPath relative new path
+     * @param string $sourcePath relative path to the source file
+     * @param string $destinationPath relative destination path
      * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException
      */
-    public function copyFile(string $oldPath, string $newPath, array $optionalParams = []): void
+    public function copyFile(string $sourcePath, string $destinationPath, array $optionalParams = []): void
     {
-        $newPath = $this->prepareFullPath($newPath);
+        $destinationPath = $this->prepareFullPath($destinationPath);
 
-        $this->prepareDirectoryForFile($newPath, $this->getDirectoryPermissionsFromParams($optionalParams));
+        $this->prepareDirectoryForFile($destinationPath, $this->getDirectoryPermissionsFromParams($optionalParams));
 
-        if (!@copy($this->prepareFullPath($oldPath), $newPath)) {
+        if (!@copy($this->prepareFullPath($sourcePath), $destinationPath)) {
             throw $this->getLastErrorAsException();
         }
 
-        $this->setPermissionsByFullPath($newPath, $this->getFilePermissionsFromParams($optionalParams));
+        $this->setPermissionsByFullPath($destinationPath, $this->getFilePermissionsFromParams($optionalParams));
     }
 
     /**
