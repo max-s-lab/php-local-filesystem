@@ -31,6 +31,8 @@ use function error_get_last;
 use const DIRECTORY_SEPARATOR;
 
 /**
+ * A class for working with the local file system.
+ *
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  *
  * @phpstan-type WriteOptionalParams array{directoryPermissions?: int, filePermissions?: int}
@@ -49,7 +51,7 @@ class LocalFilesystem
      *        directory?: int,
      *        file?: int
      *    }
-     * } $optionalParams
+     * } $optionalParams Optional parameters. *Note: permissions MUST be set in octal mode*.
      */
     public function __construct(
         private string $location,
@@ -127,6 +129,7 @@ class LocalFilesystem
      * ```
      *
      * @param string $path relative path
+     * @param int $permissions octal mode permissions
      *
      * @throws LocalFilesystemException
      *
@@ -153,7 +156,7 @@ class LocalFilesystem
      *
      * @throws LocalFilesystemException
      *
-     * @return int the permissions on the file
+     * @return int numeric mode permissions (example: `0100644`)
      *
      * @see [fileperms](https://www.php.net/manual/en/function.fileperms.php) for more information
      */
@@ -220,6 +223,9 @@ class LocalFilesystem
      * @param WriteOptionalParams|array{flags?: int} $optionalParams
      *
      * @throws LocalFilesystemException
+     *
+     * @see [file_put_contents](https://www.php.net/manual/en/function.file-put-contents.php) for more information
+     * about `flags`
      */
     public function writeToFile(string $path, $content, array $optionalParams = []): void
     {
@@ -403,8 +409,8 @@ class LocalFilesystem
      * ]);
      * ```
      *
-     * @param string $oldPath relative oldPath
-     * @param string $newPath relative newPath
+     * @param string $oldPath relative old path
+     * @param string $newPath relative new path
      * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException
@@ -438,8 +444,8 @@ class LocalFilesystem
      * ]);
      * ```
      *
-     * @param string $oldPath relative oldPath
-     * @param string $newPath relative newPath
+     * @param string $oldPath old relative path
+     * @param string $newPath new relative path
      * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException

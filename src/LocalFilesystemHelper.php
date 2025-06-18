@@ -12,6 +12,8 @@ use function sprintf;
 use const DIRECTORY_SEPARATOR;
 
 /**
+ * Auxiliary class for working with the local file system.
+ *
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  */
 class LocalFilesystemHelper
