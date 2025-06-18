@@ -31,6 +31,8 @@ use function error_get_last;
 use const DIRECTORY_SEPARATOR;
 
 /**
+ * A class for working with the local file system.
+ *
  * @author Maksim Spirkov <spirkov.2001@mail.ru>
  *
  * @phpstan-type WriteOptionalParams array{directoryPermissions?: int, filePermissions?: int}
@@ -51,7 +53,7 @@ class LocalFilesystem
      *        directory?: int,
      *        file?: int
      *    }
-     * } $optionalParams
+     * } $optionalParams Optional parameters. *Note: permissions MUST be set in octal mode*.
      */
     public function __construct(string $location, array $optionalParams = [])
     {
@@ -61,7 +63,20 @@ class LocalFilesystem
     }
 
     /**
+     * Preparing full path by relative path.
+     *
+     * Example:
+     * ```php
+     * // File
+     * $result = $filesystem->prepareFullPath('file.txt');
+     *
+     * // Directory
+     * $result = $filesystem->prepareFullPath('directory');
+     * ```
+     *
      * @param string $path relative path
+     *
+     * @return string full path
      */
     public function prepareFullPath(string $path): string
     {
@@ -69,7 +84,16 @@ class LocalFilesystem
     }
 
     /**
+     * Checking the existence of a file.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->fileExists('file.txt');
+     * ```
+     *
      * @param string $path relative path
+     *
+     * @see [is_file](https://www.php.net/manual/en/function.is-file.php) for more information
      */
     public function fileExists(string $path): bool
     {
@@ -77,7 +101,16 @@ class LocalFilesystem
     }
 
     /**
+     * Checking the existence of a directory.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->directoryExists('directory');
+     * ```
+     *
      * @param string $path relative path
+     *
+     * @see [is_dir](https://www.php.net/manual/en/function.is-dir.php) for more information
      */
     public function directoryExists(string $path): bool
     {
@@ -85,9 +118,23 @@ class LocalFilesystem
     }
 
     /**
+     * Setting up permissions.
+     *
+     * Example:
+     * ```php
+     * // File
+     * $filesystem->setPermissions('file.txt', 0644);
+     *
+     * // Directory
+     * $filesystem->setPermissions('directory', 0755);
+     * ```
+     *
      * @param string $path relative path
+     * @param int $permissions octal mode permissions
      *
      * @throws LocalFilesystemException
+     *
+     * @see [chmod](https://www.php.net/manual/en/function.chmod.php) for more information
      */
     public function setPermissions(string $path, int $permissions): void
     {
@@ -95,9 +142,24 @@ class LocalFilesystem
     }
 
     /**
+     * Getting permissions.
+     *
+     * Example:
+     * ```php
+     * // File
+     * $result = $filesystem->getPermissions('file.txt');
+     *
+     * // Directory
+     * $result = $filesystem->getPermissions('directory');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
+     *
+     * @return int numeric mode permissions (example: `0100644`)
+     *
+     * @see [fileperms](https://www.php.net/manual/en/function.fileperms.php) for more information
      */
     public function getPermissions(string $path): int
     {
@@ -111,12 +173,21 @@ class LocalFilesystem
     }
 
     /**
+     * Pathnames listing.
+     *
+     * Example:
+     * ```php
+     * $result = filesystem->listPathnames('*');
+     * ```
+     *
      * @param string $pattern relative pattern
      *
      * @throws LocalFilesystemException
      *
      * @return string[] an array containing the matched files/directories, an empty array
      * if no file matched
+     *
+     * @see [glob](https://www.php.net/manual/en/function.glob.php) for more information
      */
     public function listPathnames(string $pattern, int $flags = 0): array
     {
@@ -132,11 +203,30 @@ class LocalFilesystem
     /**
      * Writing content to a file with the creation of a file and a directory for it.
      *
+     * Example:
+     * ```php
+     * $filesystem->writeToFile('file.txt', 'Test');
+     * ```
+     *
+     * This method also allows you to set permissions for directories and file:
+     * ```php
+     * $filesystem->writeToFile('file.txt', 'Test', [
+     *     'directoryPermissions' => 0777,
+     *     'filePermissions' => 0666,
+     * ]);
+     * ```
+     *
+     * You can also use this method to write a stream to a file.
+     * To do this, simply replace `'Test'` with a stream.
+     *
      * @param string $path relative path
      * @param mixed $content
      * @param WriteOptionalParams|array{flags?: int} $optionalParams
      *
      * @throws LocalFilesystemException
+     *
+     * @see [file_put_contents](https://www.php.net/manual/en/function.file-put-contents.php) for more information
+     * about `flags`
      */
     public function writeToFile(string $path, $content, array $optionalParams = []): void
     {
@@ -152,11 +242,20 @@ class LocalFilesystem
     }
 
     /**
+     * Reading a file.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->readFile('file.txt');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
      *
      * @return string file content
+     *
+     * @see [file_get_contents](https://www.php.net/manual/en/function.file-get-contents.php) for more information
      */
     public function readFile(string $path): string
     {
@@ -170,11 +269,20 @@ class LocalFilesystem
     }
 
     /**
+     * Streaming file reading.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->readFileAsStream('file.txt');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
      *
      * @return resource stream for reading file content
+     *
+     * @see [fopen](https://www.php.net/manual/en/function.fopen.php) for more information
      */
     public function readFileAsStream(string $path)
     {
@@ -188,11 +296,20 @@ class LocalFilesystem
     }
 
     /**
+     * Getting the file size.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->getFileSize('file.txt');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
      *
      * @return int the size of the file in bytes
+     *
+     * @see [filesize](https://www.php.net/manual/en/function.filesize.php) for more information
      */
     public function getFileSize(string $path): int
     {
@@ -206,11 +323,20 @@ class LocalFilesystem
     }
 
     /**
+     * Detect MIME Content-type for a file.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->getFileMimeType('file.txt');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
      *
      * @return string the content type in MIME format, like text/plain or application/octet-stream.
+     *
+     * @see [mime_content_type](https://www.php.net/manual/en/function.mime-content-type.php) for more information
      */
     public function getFileMimeType(string $path): string
     {
@@ -224,12 +350,21 @@ class LocalFilesystem
     }
 
     /**
+     * Getting the file modification time.
+     *
+     * Example:
+     * ```php
+     * $result = $filesystem->getFileLastModifiedTime('file.txt');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
      *
      * @return int the time the file was last modified. The time is returned as a Unix timestamp,
      * which is suitable for the date function.
+     *
+     * @see [filemtime](https://www.php.net/manual/en/function.filemtime.php) for more information
      */
     public function getFileLastModifiedTime(string $path): int
     {
@@ -243,6 +378,13 @@ class LocalFilesystem
     }
 
     /**
+     * Deleting a file.
+     *
+     * Example:
+     * ```php
+     * $filesystem->deleteFile('file.txt');
+     * ```
+     *
      * @param string $path relative path
      *
      * @throws LocalFilesystemException
@@ -255,8 +397,21 @@ class LocalFilesystem
     /**
      * Copying a file with creating a directory for it.
      *
-     * @param string $oldPath relative oldPath
-     * @param string $newPath relative newPath
+     * Example:
+     * ```php
+     * $filesystem->copyFile('file.txt', 'directory/file.txt');
+     * ```
+     *
+     * This method also allows you to set permissions for directories and file:
+     * ```php
+     * $filesystem->copyFile('file.txt', 'directory/file.txt', [
+     *     'directoryPermissions' => 0777,
+     *     'filePermissions' => 0666,
+     * ]);
+     * ```
+     *
+     * @param string $oldPath relative path to the source file
+     * @param string $newPath relative destination path
      * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException
@@ -277,8 +432,21 @@ class LocalFilesystem
     /**
      * Moving a file with creating a directory for it.
      *
-     * @param string $oldPath relative oldPath
-     * @param string $newPath relative newPath
+     * Example:
+     * ```php
+     * $filesystem->moveFile('file.txt', 'directory/file.txt');
+     * ```
+     *
+     * This method also allows you to set permissions for directories and file:
+     * ```php
+     * $filesystem->moveFile('file.txt', 'directory/file.txt', [
+     *     'directoryPermissions' => 0777,
+     *     'filePermissions' => 0666,
+     * ]);
+     * ```
+     *
+     * @param string $oldPath old relative path
+     * @param string $newPath new relative path
      * @param WriteOptionalParams $optionalParams
      *
      * @throws LocalFilesystemException
@@ -297,7 +465,17 @@ class LocalFilesystem
     }
 
     /**
-     * Recursive creating a directory.
+     * Recursively creating a directory.
+     *
+     * Example:
+     * ```php
+     * $filesystem->createDirectory('directory');
+     * ```
+     *
+     * It also allows you to set permissions for the created directories:
+     * ```php
+     * $filesystem->createDirectory('directory', 0777);
+     * ```
      *
      * @param string $path relative path
      *
@@ -313,6 +491,11 @@ class LocalFilesystem
 
     /**
      * Recursively deleting a directory along with the contained files and directories.
+     *
+     * Example:
+     * ```php
+     * $filesystem->deleteDirectory('directory');
+     * ```
      *
      * @param string $path relative path
      *
