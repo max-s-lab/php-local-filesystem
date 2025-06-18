@@ -38,7 +38,7 @@ class LocalFilesystemHelper
      *
      * Example:
      * ```php
-     * LocalFilesystem::filepermsToOctatValue(0100644);
+     * LocalFilesystem::filepermsToOctalValue(0100644);
      * ```
      *
      * @param int $fileperms numeric mode permissions
