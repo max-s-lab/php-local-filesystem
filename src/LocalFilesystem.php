@@ -204,9 +204,7 @@ class LocalFilesystem
      * $filesystem->writeToFile('file.txt', 'Test');
      * ```
      *
-     * This method also allows you to set permissions for directories and file.
-     * If you do not specify them, the default settings will be used.
-     *
+     * This method also allows you to set permissions for directories and file:
      * ```php
      * $filesystem->writeToFile('file.txt', 'Test', [
      *     'directoryPermissions' => 0777,
@@ -373,11 +371,11 @@ class LocalFilesystem
     }
 
     /**
-     * Recursively deleting a directory along with the contained files and directories.
+     * Deleting a file.
      *
      * Example:
      * ```php
-     * $filesystem->deleteDirectory('directory');
+     * $filesystem->deleteFile('file.txt');
      * ```
      *
      * @param string $path relative path
@@ -397,9 +395,7 @@ class LocalFilesystem
      * $filesystem->copyFile('file.txt', 'directory/file.txt');
      * ```
      *
-     * This method also allows you to set permissions for directories and file.
-     * If you do not specify them, the default settings will be used.
-     *
+     * This method also allows you to set permissions for directories and file:
      * ```php
      * $filesystem->copyFile('file.txt', 'directory/file.txt', [
      *     'directoryPermissions' => 0777,
@@ -434,9 +430,7 @@ class LocalFilesystem
      * $filesystem->moveFile('file.txt', 'directory/file.txt');
      * ```
      *
-     * This method also allows you to set permissions for directories and file.
-     * If you do not specify them, the default settings will be used.
-     *
+     * This method also allows you to set permissions for directories and file:
      * ```php
      * $filesystem->moveFile('file.txt', 'directory/file.txt', [
      *     'directoryPermissions' => 0777,
@@ -471,8 +465,7 @@ class LocalFilesystem
      * $filesystem->createDirectory('directory');
      * ```
      *
-     * It also allows you to set permissions for the created directories.
-     *
+     * It also allows you to set permissions for the created directories:
      * ```php
      * $filesystem->createDirectory('directory', 0777);
      * ```
